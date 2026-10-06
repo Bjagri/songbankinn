@@ -425,7 +425,7 @@ async function init(){
     catch(_){ note="Ekki náðist í nýjustu útgáfu skjalsins, svo hér eru sýnd vistuð gögn."; }
   }
   $('#dataNote').textContent=note;
-  build(rows); if(window.innerWidth>820){ $('#facets').classList.add('open'); $('#facetToggle').setAttribute('aria-expanded','true'); } renderFacets(); route();
+  build(rows); renderFacets(); route();
 }
 init();
 </script>
