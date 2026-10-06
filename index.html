@@ -295,7 +295,7 @@ function renderFacets(){
   let lands=[...lt.keys()].sort((a,b)=>lt.get(b)-lt.get(a)||coll.compare(a,b));
   const lmore=lands.length>10, lall=state.expanded.has('land');
   if(lmore && !lall) lands=lands.filter((l,i)=>i<10||state.lands.has(l));
-  if(lt.size) html+=`<div class="fgroup g-land"><h2>Land</h2><div class="chips">`+lands.map(l=>{const on=state.lands.has(l),n=lc.get(l)||0;
+  if(lt.size) html+=`<div class="fgroup g-land"><h2>Upprunaland lags</h2><div class="chips">`+lands.map(l=>{const on=state.lands.has(l),n=lc.get(l)||0;
     return `<button type="button" class="chip g-land" data-land="${esc(l)}" aria-pressed="${on}" ${!on&&!n?'disabled':''}>${esc(l)} <span class="n">${n}</span></button>`}).join('')+(lmore?`<button type="button" class="more" data-more="land">${lall?'Sýna færri':'Sýna öll lönd ('+lt.size+')'}</button>`:'')+`</div></div>`;
   $('#facets').innerHTML=html;
   const n=state.cats.size+state.lands.size; $('#facetCount').textContent=n; $('#facetToggle').classList.toggle('has',n>0);
@@ -355,7 +355,6 @@ function renderDetail(){
       ${did?`<button type="button" class="btn k-audio" data-play="audio"><span class="ic">${icon.play}</span>Hlusta</button>`:linkBtn(s.audio,'Hlusta',icon.play,'audio')}
       ${yid?`<button type="button" class="btn k-yt" data-play="video"><span class="ic">${icon.yt}</span>Myndband</button>`:linkBtn(s.yt,'Myndband',icon.yt,'yt')}
       ${linkBtn(s.score,'MuseScore',icon.note,'score')}
-      ${linkBtn(s.midi,'MIDI',icon.midi,'midi')}
     </div>
     <div class="player" id="player"></div>
     <div class="cols">
